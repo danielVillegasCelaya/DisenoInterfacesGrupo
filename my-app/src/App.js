@@ -2,14 +2,14 @@ import logo from './logo.svg';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import MenuNavBar from './componentes/MenuNavBar';
-import {MenuNav} from './data/MenuNav';
+import { MenuNav } from './data/MenuNav';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <header className="App-header">
-          <MenuNavBar />
+          <MenuNavBar/>
         </header>
         {MenuNav.map((item) => {
           return (
@@ -17,8 +17,8 @@ function App() {
               key={item.id}
               path={item.path}
               exact
-              component={item.component}/>
-            );
+              component={item.component} />
+          );
         })}
       </div>
     </Router>
