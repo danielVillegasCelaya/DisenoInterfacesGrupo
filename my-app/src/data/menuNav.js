@@ -1,6 +1,6 @@
-import ApiOnline from '../components/ApiOnline';
-import Login from '../components/Login';
-import Inicio from '../components/Inicio';
+import ApiOnline from '../componentes/ApiOnline';
+import Login from '../componentes/Login';
+import Inicio from '../componentes/Inicio';
 
 export const MenuNav = [
   {
@@ -20,4 +20,4 @@ export const MenuNav = [
       path: '/inicio',
       title: 'Inicio',
       component: Inicio,
-    }*/];
+    }];

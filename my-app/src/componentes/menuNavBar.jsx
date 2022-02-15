@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl,Button } from 'react-bootstrap';
+import Inicio from '../componentes/Inicio';
 import { MenuNav } from '../data/MenuNav';
 
 class MenuNavBar extends React.Component {
@@ -12,7 +13,7 @@ class MenuNavBar extends React.Component {
     return (
       <Navbar bg="Dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+          <Navbar.Brand>Navbar scroll</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -20,9 +21,9 @@ class MenuNavBar extends React.Component {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="">Home</Nav.Link>
+              <Nav.Link href="">Home<Inicio/></Nav.Link>
               <Nav.Link href="https://www.afuegolento.com/">Recetas</Nav.Link>
-              <NavDropdown title="Link" id="navbarScrollingDropdown">
+              <NavDropdown title="Menu" id="navbarScrollingDropdown">
                 {MenuNav.map((item) => {
                   return <Nav.Link as={Link} to={item.path}>
                     {item.title}</Nav.Link>
