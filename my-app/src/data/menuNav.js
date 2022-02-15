@@ -1,4 +1,4 @@
-export const MenuItems = [
+export const MenuNav = [
     {
       id: 1,
       path: '/login',
