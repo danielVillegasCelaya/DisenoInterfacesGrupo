@@ -9,7 +9,7 @@ export const MenuNav = [
       id: 2,
       path: '/api',
       title: 'Api',
-      component: Api,
+      component: ApiOnline,
     },
     {
       id: 3,
