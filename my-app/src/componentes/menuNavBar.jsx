@@ -26,7 +26,7 @@ class MenuNavBar extends React.Component {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel">
-                Ejercicios
+                Menus
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
