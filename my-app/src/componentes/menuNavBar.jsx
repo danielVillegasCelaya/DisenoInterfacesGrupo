@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav,Offcanvas ,Form, FormControl, Button } from 'react-bootstrap';
 import Inicio from '../componentes/Inicio';
 import { MenuNav } from '../data/MenuNav';
 
