@@ -7,7 +7,6 @@ import { MenuNav } from './data/MenuNav';
 function App() {
   return (
     <Router>
-      <div className="App">
         <header className="App-header">
           <MenuNavBar/>
         </header>
@@ -20,7 +19,6 @@ function App() {
               component={item.component} />
           );
         })}
-      </div>
     </Router>
   );
 }

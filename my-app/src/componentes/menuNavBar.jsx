@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav,Offcanvas ,Form, FormControl, Button } from 'react-bootstrap';
-import Inicio from '../componentes/Inicio';
 import { MenuNav } from '../data/MenuNav';
+import './style.css';
 
 class MenuNavBar extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class MenuNavBar extends React.Component {
     return (
       <Navbar bg="Dark" expand={false}>
         <Container fluid>
-          <Navbar.Brand><img
+          <Navbar.Brand><img "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg2.freepng.es%2F20180505%2Fzae%2Fkisspng-kitchen-utensil-logo-rolling-pins-cook-5aed90335d04b5.390316611525518387381.jpg&imgrefurl=https%3A%2F%2Fwww.freepng.es%2Fpng-rv6zip%2F&tbnid=s8RbXwpiwQQi_M&vet=12ahUKEwiyzLf5pob2AhXV8LsIHTLkCecQMygZegUIARCXAg..i&docid=KXG5TvZRyYyu4M&w=900&h=780&q=logo%20cocina&ved=2ahUKEwiyzLf5pob2AhXV8LsIHTLkCecQMygZegUIARCXAg"
 
           />
             Proyecto DI
