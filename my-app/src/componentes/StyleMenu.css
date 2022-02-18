@@ -1,0 +1,23 @@
+
+/*Estilo del offcanvas*/
+.offcanvas{
+  background-color: #3c89b6;
+  color: black;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  }
+  h2{
+    color:whitesmoke;
+  }
+  /* Link de los componentes en navbar*/
+  .nav-link{
+    color: whitesmoke;
+  }
+  .nav-expanded {
+    flex-direction: row !important;
+  }
+  .navlink-expanded {
+    padding-right: 2em !important;
+  }
+
+  
