@@ -4,17 +4,15 @@ import React from "react";
 import ApiOnline from "./componentes/ApiOnline";
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import MenuNavBar from "./componentes/MenuNavBar";
-import { MenuNav } from "./data/MenuNav";
+import { menuNav } from "./data/menuNav";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
-      <body>
+      <header className="App-header"/>
       <Router>
        <MenuNavBar />
-        {MenuNav.map((item) => {
+        {menuNav.map((item) => {
           return (
             <Route
               key={item.id}
@@ -26,8 +24,6 @@ function App() {
         })}
         <ApiOnline />
       </Router>
-      </body>
-      
     </div>
   );
 }

@@ -2,7 +2,7 @@ import ApiOnline from "../componentes/ApiOnline";
 import Login from "../componentes/Login";
 import Inicio from "../componentes/Inicio";
 
-export const MenuNav = [
+export const menuNav = [
     {
       id: 1,
       path: '/login',
