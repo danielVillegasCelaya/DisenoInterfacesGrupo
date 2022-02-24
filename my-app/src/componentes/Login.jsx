@@ -1,106 +1,107 @@
 import React from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Row, Col, FloatingLabel } from 'react-bootstrap';
 import { Usuarios } from '../data/Usuarios';
+import './index.css';
+
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { user: '', password: '', id: undefined };
+        this.state = { Usuario: null };
+        this.users = Usuarios;
         this.login = this.login.bind(this);
         this.inputUser = React.createRef();
         this.inputPassword = React.createRef();
     }
 
     login() {
-        let e = false;
-        let i = 0;
 
-        do {
-            if (
-                Usuarios[i].user == this.inputUser.current.value &&
-                Usuarios[i].password == this.inputPassword.current.value
-            ) {
+        let e = false;
+
+        this.users.map((item) => {
+            if (item.user.match(this.inputUser.current.value) && item.password.match(this.inputPassword.current.value)) {
                 e = true;
-            } else {
-                i += 1;
+                this.setState({ Usuario: item });
             }
-        } while (i < Usuarios.length && e == false);
+        });
 
         if (e == true) {
-            this.setState({
-                user: this.inputUser.current.value,
-                password: this.inputPassword.current.value,
-                id: i
-            });
+            alert('Bienvenido');
         } else {
-            alert('No existe el usuario o la contreña no es la correcta.');
+            alert('Usuario o contreña incorrectos.');
         }
     }
 
+
     componentDidMount() {
-        this.setState({
-            user: localStorage.getItem('user'),
-            password: localStorage.getItem('password'),
-            id: localStorage.getItem('id')
-        });
+
+        if (localStorage.getItem('id') !== 'null') {
+            this.setState({
+                Usuario: this.users[localStorage.getItem('id')]
+            });
+        } else {
+            this.setState({
+                Usuario: null
+            });
+        }
     }
 
     componentWillUnmount() {
-        localStorage.setItem('user', this.state.user);
-        localStorage.setItem('password', this.state.password);
-        localStorage.setItem('id', this.state.id);
+        if (this.state.Usuario !== null) {
+            localStorage.setItem('id', this.state.Usuario.id);
+        } else {
+            localStorage.setItem('id', null);
+        }
     }
 
-    render() {
-        if (
-            this.state.user != null &&
-            this.state.user != 'null' &&
-            this.state.user != '' &&
-            this.state.password != null &&
-            this.state.password != 'null' &&
-            this.state.password != ''
-        ) {
 
+
+    render() {
+        if (this.state.Usuario !== null) {
             return (
-                <div className="main-site">
+                <div className="bg">
+                    <br />
                     <Container>
-                        <br />
-                        <h1>Bienvenido {this.state.user}</h1>
+                        <Row>
+                            <Col xs={8} className="p-3 m-auto  shadow rounded">
+                                <h1>Bienvenido {this.state.Usuario.user}</h1>
+                            </Col>
+                        </Row>
                     </Container>
                 </div>
             );
         } else {
 
             return (
-                <div className="main-site">
+                <div className="bg">
+                    <br />
                     <Container>
-                        <br />
-                        <h1>Inicio de sesion:</h1>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Nombre de usuario o email: </Form.Label>
-                                <Form.Control
-                                    type="email"
-                                    placeholder="Usuario"
-                                    ref={this.inputUser}
-                                />
-                            </Form.Group>
+                        <Row>
+                            <Col xs={3} className="p-3 m-auto  shadow rounded">
 
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Contraseña: </Form.Label>
-                                <Form.Control
-                                    type="password"
-                                    placeholder="Contraseña"
-                                    ref={this.inputPassword}
-                                />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Recordarme" />
-                            </Form.Group>
-                            <Button variant="primary" type="button" onClick={this.login}>
-                                Login
-                            </Button>
-                        </Form>
+                                <Form>
+                                    <FloatingLabel controlId="floatingInput" label="Usuario" className="mb-3">
+                                        <Form.Control size='lg'
+                                            type="email"
+                                            placeholder="Usuario"
+                                            ref={this.inputUser} />
+                                    </FloatingLabel>
+
+                                    <FloatingLabel controlId="floatingPassword" label="Contraseña" className="mb-3">
+                                        <Form.Control size='lg'
+                                            type="password"
+                                            placeholder="Contraseña"
+                                            ref={this.inputPassword} />
+                                    </FloatingLabel>
+                                </Form>
+
+                                <div className="d-grid gap-2">
+                                    <Button size='lg' variant="primary" type="button" onClick={this.login}>
+                                        Iniciar Sesion
+                                    </Button>
+                                </div>
+                            </Col>
+                        </Row>
                     </Container>
                 </div>
             );
