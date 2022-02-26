@@ -22,7 +22,6 @@ function App() {
             />
           );
         })}
-        <ApiOnline />
       </Router>
     </div>
   );
