@@ -5,7 +5,7 @@ import uuid from 'react-build';
 class ApiOnline extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedItem: 0, tableData: [] };
+    this.state = { img: '',nombre:'', id:'',selectedItem: 0, tableData: [] };
   }
 
   async componentDidMount() {
@@ -19,7 +19,10 @@ class ApiOnline extends React.Component {
   }
 
   recogerDetalles = (item) => {
-    this.setState({ selectedItem: item });
+    const imagen=item.strMealThumb;
+    const nombre=item.strMeal;
+    const id=item.idMeal
+    this.setState({ img:imagen,nombre:nombre,id:id});
   };
 
   render() {
@@ -53,12 +56,12 @@ class ApiOnline extends React.Component {
                 <Card style={{ width: '18rem' }}>
                   <Card.Img
                     variant="top"
-                    src={this.state.selectedItem.strMealThumb}
+                    src={this.state.img}
                   />
                   <Card.Body>
-                    <Card.Title>{this.state.selectedItem.strMeal}</Card.Title>
+                    <Card.Title>{this.state.nombre}</Card.Title>
                     <Card.Text>
-                      Id: {this.state.selectedItem.idMeal}
+                      Id: {this.state.id}
                     </Card.Text>
                   </Card.Body>
                 </Card>
