@@ -1,15 +1,16 @@
-import React from 'react';
-class Login extends React.Component {
-    constructor(props) {
-        super(props); 
-    }
+import React from "react";
 
-render() {
-    return (
-        <div className="main-site">
-        Esto es el login
-        </div>
-    );
-}
+class Login extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
+        return(
+            <>
+            <h1>Soy el login</h1>
+            </>
+        )
+    }
+   
 }
 export default Login;
