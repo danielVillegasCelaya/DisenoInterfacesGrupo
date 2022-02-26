@@ -1,0 +1,46 @@
+.offcanvas{
+    background-color: #3c89b6;
+    color: black;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    }
+  
+    .offcanvas-body{
+      background-color: #3c89b6;
+    }
+    .offcanvas-body.nav-link{
+      color: rgb(182, 88, 88);
+    }
+    .offcanvas-header{
+      background-color: #3c89b6;
+    
+    }
+    .offcanvasNavbarLabel.titulo{
+      color: rgb(14, 7, 7);
+      font-weight: bold;
+    }
+    h2{
+      color:whitesmoke;
+    }
+    .lista{
+      border: 2px solid;
+      border-color: #246991;
+      padding-left: 5px;
+      background-color: #47a2d6;
+    }
+    /* Link de los componentes en navbar*/
+    a.nav-link{
+      font-weight: bold;
+      color: black;
+    }
+    .nav-expanded {
+      flex-direction: row !important;
+    }
+    .navlink-expanded {
+      padding-left: 2em !important;
+    }
+    .btn{
+      background-color:blueviolet;
+    }
+  
+    
