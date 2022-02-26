@@ -1,5 +1,5 @@
 //www.themealdb.com/api/json/v1/1/filter.php?a=Canadian
-import React from 'react';
+import React,{useState} from 'react';
 import { Card, Container, Table, Row, Col, Spinner } from 'react-bootstrap';
 import uuid from 'react-build';
 class ApiOnline extends React.Component {
@@ -14,7 +14,7 @@ class ApiOnline extends React.Component {
     );
     const responseData = await response.json();
     console.log("Prueba",responseData.meals);
-    this.setState({ tableData: responseData.meals, selectedItem: responseData[0] });
+    this.setState({ tableData: responseData.meals, selectedItem: responseData.meals[0] });
 
   }
 
@@ -39,7 +39,8 @@ class ApiOnline extends React.Component {
                   <tbody>
                     {this.state.tableData.map((item) => {
                       return (
-                        <tr onClick={() => this.recogerDetalles(item)}>
+                        <tr key={uuid()}
+                         onClick={() => this.recogerDetalles(item)}>
                           <td>{item.strMeal}</td>
                           <td>{item.idMeal}</td>
                         </tr>
