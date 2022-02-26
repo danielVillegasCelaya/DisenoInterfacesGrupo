@@ -8,22 +8,22 @@ import { menuNav } from "./data/menuNav";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"/>
-      <Router>
-       <MenuNavBar />
-        {menuNav.map((item) => {
+    <Router>
+        <header className="App-header">
+          <MenuNavBar/>
+        </header>
+        <body className="App-body">
+        {MenuNav.map((item) => {
           return (
             <Route
               key={item.id}
               path={item.path}
               exact
-              component={item.component}
-            />
+              component={item.component} />
           );
         })}
-      </Router>
-    </div>
+        </body>
+    </Router>
   );
 }
 
