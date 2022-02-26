@@ -13,7 +13,9 @@ class ApiOnline extends React.Component {
       'https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian'
     );
     const responseData = await response.json();
-    this.setState({ tableData: responseData, selectedItem: responseData[0] });
+    console.log("Prueba",responseData.meals);
+    this.setState({ tableData: responseData.meals, selectedItem: responseData[0] });
+
   }
 
   recogerDetalles = (item) => {
@@ -21,13 +23,6 @@ class ApiOnline extends React.Component {
   };
 
   render() {
-    if(tableData.length==null){
-     return(
-        <>
-        <Spinner animation="grow"></Spinner>
-        </>
-      )
-    }else{
       return (
         <div className="main-site">
           <h1>Comidas</h1>
@@ -73,7 +68,7 @@ class ApiOnline extends React.Component {
       );
     }
     
-  }
+  
 }
 
 export default ApiOnline;
