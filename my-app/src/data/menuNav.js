@@ -1,5 +1,6 @@
 import ApiOnline from "../componentes/ApiOnline";
 import Login from "../componentes/Login";
+import Perfil from "../componentes/Perfil";
 
 export const MenuNav = [
     {
@@ -14,4 +15,10 @@ export const MenuNav = [
       title: 'Api',
       component: ApiOnline,
     },
+    {
+      id: 3,
+      path: '/Perfil',
+      title: 'Perfil',
+      component: Perfil,
+    }
    ];
