@@ -35,9 +35,17 @@ class Login extends React.Component {
 
     componentDidMount() {
 
-        if (localStorage.getItem('id') !== 'null') {
+        if (localStorage.getItem('id') !== 'null'||
+        localStorage.getItem('user') !== 'null'||
+        localStorage.getItem('password') !== 'null'||
+        localStorage.getItem('name') !== 'null'||
+        localStorage.getItem('mail') !== 'null') {
             this.setState({
-                Usuario: this.users[localStorage.getItem('id')]
+                Usuario: this.users[localStorage.getItem('id')],
+                Usuario: this.users[localStorage.getItem('user')],
+                Usuario: this.users[localStorage.getItem('password')],
+                Usuario: this.users[localStorage.getItem('name')],
+                Usuario: this.users[localStorage.getItem('mail')],
             });
         } else {
             this.setState({
@@ -49,8 +57,16 @@ class Login extends React.Component {
     componentWillUnmount() {
         if (this.state.Usuario !== null) {
             localStorage.setItem('id', this.state.Usuario.id);
+            localStorage.setItem('user',this.state.Usuario.user);
+            localStorage.setItem('password',this.state.Usuario.password);
+            localStorage.setItem('name',this.state.Usuario.name);
+            localStorage.setItem('mail',this.state.Usuario.mail);
         } else {
             localStorage.setItem('id', null);
+            localStorage.setItem('user',null);
+            localStorage.setItem('password',null);
+            localStorage.setItem('name',null);
+            localStorage.setItem('mail',null);
         }
     }
 
