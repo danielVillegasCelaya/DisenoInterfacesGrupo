@@ -1,6 +1,6 @@
 import React from "react";
-import COMIDAS_LISTAR_REGIONES from '../data/ConstantesApi';
-import uuid from "react-uuid";
+import {COMIDAS_LISTAR_REGIONES} from '../data/ConstantesApi';
+
 import {Col,Form} from 'react-bootstrap';
 
 class BuscadorRegion extends React.Component{
@@ -13,28 +13,39 @@ class BuscadorRegion extends React.Component{
     /**
      * Recuperamos LAS REGIONES
      */
+
     async componentDidMount(){
+        console.log("Ha entrado");
         const responseRegion=await fetch(COMIDAS_LISTAR_REGIONES);
         const responseDataRegion=await responseRegion.json();
-        this.region=responseDataRegion.data;
-       // this.setState({ region: responseDataRegion.meals, selectedItem: responseDataRegion.meals[0] });
+        console.log("Prueba regiones",responseDataRegion.meals);
+        this.region=responseDataRegion.meals;
     }
 
 render(){
-    return(
-        <Form.Group as={Col}>
-            <Form.Label>Region</Form.Label>
-            <Form.Select ref={this.reference}>
-                {this.region.map((item)=>{
-                    return(
-                        <option key={uuid()} value={item.strArea}>
-                            {item.strArea}
-                        </option>
-                    )
-                })}
-            </Form.Select>
-        </Form.Group>
-    )
+    if(this.region===null){
+        return(
+            <div>
+                Hola
+            </div>
+        );
+    }else{
+        return(
+            <Form.Group as={Col}>
+                <Form.Label>Organizar por region</Form.Label>
+                <Form.Select ref={this.reference}>
+                    {this.region.map((item)=>{
+                        return(
+                            <option value={item.strArea}>
+                                {item.strArea}
+                            </option>
+                        );
+                    })}
+                </Form.Select>
+            </Form.Group>
+        );
+    }
+    
 }
 
 

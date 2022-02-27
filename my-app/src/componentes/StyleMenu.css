@@ -22,6 +22,9 @@
     h2{
       color:whitesmoke;
     }
+    h3{
+      color: black;
+    }
     .lista{
       border: 2px solid;
       border-color: #246991;
@@ -41,6 +44,15 @@
     }
     .btn{
       background-color:blueviolet;
+    }
+    .carousel .item {
+      height: 100px;
+      width:200px;
+    }
+    
+    .imgc {
+      width:300px;
+      height:40px;
     }
   
     
