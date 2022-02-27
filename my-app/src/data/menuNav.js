@@ -1,8 +1,7 @@
 import ApiOnline from "../componentes/ApiOnline";
 import Login from "../componentes/Login";
-import Inicio from "../componentes/Inicio";
 
-export const menuNav = [
+export const MenuNav = [
     {
       id: 1,
       path: '/login',
@@ -15,9 +14,4 @@ export const menuNav = [
       title: 'Api',
       component: ApiOnline,
     },
-    {
-      id: 3,
-      path: '/inicio',
-      title: 'Inicio',
-      component: Inicio,
-    }];
+   ];

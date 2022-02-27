@@ -1,10 +1,9 @@
 
 import './App.css';
 import React from "react";
-import ApiOnline from "./componentes/ApiOnline";
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import MenuNavBar from "./componentes/MenuNavBar";
-import { menuNav } from "./data/menuNav";
+import { MenuNav } from "./data/MenuNav";
 
 function App() {
   return (

@@ -2,6 +2,7 @@
 import React,{useState} from 'react';
 import { Card, Container, Table, Row, Col, Spinner } from 'react-bootstrap';
 import uuid from 'react-build';
+import BuscadorRegion from './BuscadorRegion';
 class ApiOnline extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,7 @@ class ApiOnline extends React.Component {
       return (
         <div className="main-site">
           <h1>Comidas</h1>
+          <BuscadorRegion/>
           <Container>
             <Row>
               <Col lg={8} md={6}>
@@ -42,8 +44,7 @@ class ApiOnline extends React.Component {
                   <tbody>
                     {this.state.tableData.map((item) => {
                       return (
-                        <tr key={uuid()}
-                         onClick={() => this.recogerDetalles(item)}>
+                        <tr onClick={() => this.recogerDetalles(item)}>
                           <td>{item.strMeal}</td>
                           <td>{item.idMeal}</td>
                         </tr>

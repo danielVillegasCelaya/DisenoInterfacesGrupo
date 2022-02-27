@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav,Offcanvas ,Form, FormControl, Button } from 'react-bootstrap';
 import { MenuNav } from '../data/MenuNav';
+import uuid from 'react-uuid';
 import './StyleMenu.css';
 import logo from '../img/logo.png'
 
@@ -41,21 +42,11 @@ class MenuNavBar extends React.Component {
                 navbarScroll
               >
                 {MenuNav.map((item) => {
-                  return <Nav.Link as={Link} to={item.path}>
+                  return <Nav.Link key={uuid()} as={Link} to={item.path}>
                     {item.title}</Nav.Link>
                 })}
                 <Nav.Link href="https://www.afuegolento.com/">Recetas</Nav.Link>
               </Nav>
-              <Form className="d-flex" id="formbuscar" >
-                <FormControl 
-                  ref={this.buscar}
-                  type="search"
-                  placeholder="Buscar"
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button id="botonbuscar">Buscar</Button>
-              </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
