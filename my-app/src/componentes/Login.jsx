@@ -18,14 +18,14 @@ class Login extends React.Component {
 
         let e = false;
 
-        this.users.map((item) => {
+        Usuarios.map((item) => {
             if (item.user.match(this.inputUser.current.value) && item.password.match(this.inputPassword.current.value)) {
                 e = true;
                 this.setState({ Usuario: item });
             }
         });
 
-        if (e == true) {
+        if (e === true) {
             alert('Bienvenido');
         } else {
             alert('Usuario o contreña incorrectos.');
