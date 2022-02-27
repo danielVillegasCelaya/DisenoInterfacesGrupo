@@ -11,7 +11,6 @@ function App() {
         <header className="App-header">
           <MenuNavBar/>
         </header>
-        <body className="App-body">
         {MenuNav.map((item) => {
           return (
             <Route
@@ -21,7 +20,6 @@ function App() {
               component={item.component} />
           );
         })}
-        </body>
     </Router>
   );
 }

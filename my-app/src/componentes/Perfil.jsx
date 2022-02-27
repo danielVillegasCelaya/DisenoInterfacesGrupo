@@ -1,59 +1,67 @@
 import React from "react";
-import { Button, Container } from 'react-bootstrap';
+import { Card, Container, Row, Button} from 'react-bootstrap';
 import { Usuarios } from '../data/Usuarios';
-import './index.css';
 
 class Perfil extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        id:'',
-        user:'',
-        password:'',
-        name:'',
-        mail:'',
-      };
+  constructor(props) {
+    super(props);
+    this.state = {user: '', email: '', pass: '', name: '',};
+  }
+  componentDidMount() {  // le da los valores de Usuarios a los estados mediante la id y localStorage
+    if (localStorage.getItem('id') !== null) {
+      this.setState({
+        user: Usuarios[localStorage.getItem('id')].nombre,
+        email: Usuarios[localStorage.getItem('id')].email,
+        pass: Usuarios[localStorage.getItem('id')].pass,
+        name: Usuarios[localStorage.getItem('id')].name,
+      });
     }
-  
-    logout() {
-      localStorage.clear();
-    }
-  
-    componentDidMount() {
-      this.setState({id:localStorage.getItem('id')});
-      this.recogerUsuario();
-    }
-  
-    recogerUsuario(){
-        
-    }
-
-    render() {
-      if (this.state.id === '') {
-        return (
-          <div className="main-site">
-            <h1> Tienes que iniciar sesión</h1>
-          </div>
-        );
-      } else {
-        return (
+  }
+  limpiar() {  // limpiarmos el local storage para desloguearse
+    localStorage.clear(this);
+    alert('Te has deslogueado');
+    //removeItem(this.id)
+  }
+  render() {
+    if (localStorage.getItem('id') !== null) { // si la id no esta asignada , no se muestra la interfaz de los datos
+      return (
+        <div className="bg">
           <Container>
-            <h1>Perfil</h1>
-            <h2>Nombre de usuario{Usuarios[this.state.usuario].user}</h2>
-            <h2>Nombre {Usuarios[this.state.usuario].name}</h2>
-            <h2>Contraseña {Usuarios[this.state.usuario].password}</h2>
-            <h2>Email {Usuarios[this.state.usuario].mail}</h2>
-            <br />
-            <Button
-              variant="primary"
-              type="button"
-              onClick={this.logout.bind(this)}
-            >
-              Logout
-            </Button>
-            </Container>
-        );
-      }
+            <Row>
+              <Card style={{ width: '25rem' }}>
+                <Card.Body>
+                  <Card.Title>
+                    Usuario: {this.state.user}
+                    <p />
+                    Email: {this.state.email}
+                    <p />
+                    Pass: {this.state.pass}
+                    <p />
+                    Nombre: {this.state.name}
+                  </Card.Title>
+                  <Card.Text>
+                    <p />
+                  </Card.Text>
+                  <Button
+                    variant="primary"
+                    type="button"
+                    onClick={this.limpiar}
+                  >
+                    Logout
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Row>
+          </Container>
+        </div>
+      );
+    }else{
+      return (
+        <div className="bg">
+          Tienes que iniciar sesion si quieres ver los datos del usuario
+          </div>
+          );
     }
+  }
   }
   export default Perfil;

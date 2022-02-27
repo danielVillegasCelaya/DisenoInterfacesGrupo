@@ -46,7 +46,7 @@ class ApiOnline extends React.Component {
 
   render() {
     return (
-      <div className="main-site">
+      <div className="bg">
         <h1>Comidas</h1>
         <SelectorRegion
           reference={this.selectRegion}
