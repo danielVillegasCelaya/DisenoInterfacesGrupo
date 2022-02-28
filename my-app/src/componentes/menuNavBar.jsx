@@ -38,8 +38,7 @@ class MenuNavBar extends React.Component {
             <Offcanvas.Body>
               <Nav
                 className="lista"
-                style={{ maxHeight: '150px' }}
-                navbarScroll
+               
               >
                 {MenuNav.map((item) => {
                   return <Nav.Link key={uuid()} as={Link} to={item.path}>
