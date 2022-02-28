@@ -49,18 +49,22 @@
       height: 100px;
       width:200px;
     }
-    
-    .imgc {
-      width:300px;
-      height:40px;
-    }
-    .bg {
+    .abg {
       background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).webp");
-      height: 100vh;
+      background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
     }
+    .bg {
+      background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).webp");
+      background-attachment: fixed;
+      height: 95vh;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
     
   
     
