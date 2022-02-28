@@ -1,6 +1,6 @@
 import React from 'react';
 import uuid from 'react-uuid';
-import { Container, Row, Col, ListGroupItem,Button,Card } from 'react-bootstrap';
+import { Container, Row, Col, ListGroupItem, Button, Card } from 'react-bootstrap';
 
 class Favoritos extends React.Component {
     constructor(props) {
@@ -51,9 +51,11 @@ class Favoritos extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Favoritos</h1>
+            <div className='bg'>
+
                 <Container>
+                    <br />
+                    <h1>Favoritos</h1>
                     <Row>
                         {this.state.favouritesList.map((item) => {
                             return (
