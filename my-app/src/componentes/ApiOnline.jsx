@@ -1,6 +1,6 @@
 //www.themealdb.com/api/json/v1/1/filter.php?a=Canadian
 import React from 'react';
-import { Card, Container, Table, Row, Col, Carousel } from 'react-bootstrap';
+import { Card, Container, Table, Row, Col, ListGroupItem, Button } from 'react-bootstrap';
 import { COMIDAS_BUSCAR_REGION, COMIDA_LISTA_INGREDIENTES, COMIDA_RANDOM } from '../data/ConstantesApi';
 import SelectorRegion from './SelectorRegion';
 import Carrousel from './Carrousel';
@@ -10,6 +10,7 @@ class ApiOnline extends React.Component {
     super(props);
     this.state = { img: '', nombre: '', id: '', selectedItem: '', tableData: [], dataCarrusel: [] };
     this.selectRegion = React.createRef();
+    this.favouritesList = [];
     this.cambiarPorRegion = this.cambiarPorRegion.bind(this);
     this.actualizarTabla = this.actualizarTabla.bind(this);
     this.recogerDetalles = this.recogerDetalles.bind(this);
@@ -38,8 +39,23 @@ class ApiOnline extends React.Component {
   }
 
   recogerDetalles = (item) => {
-    this.setState({selectedItem: item });
+    this.setState({ selectedItem: item });
   };
+
+  addFavourites = () => {
+    // Comprobamos si el elemento ya está en la lista, en cuyo caso no lo añadimos
+    let index = this.favouritesList.findIndex(
+      (item) => item.strMeal == this.state.selectedItem.strMeal
+    );
+
+    index === -1
+      ? this.favouritesList.push(this.state.selectedItem)
+      : console.log('Ya está en favoritos');
+  };
+
+  componentWillUnmount() {
+    localStorage.setItem('favourites', JSON.stringify(this.favouritesList));
+  }
 
   render() {
     return (
@@ -83,6 +99,10 @@ class ApiOnline extends React.Component {
                     Id: {this.state.selectedItem.idMeal}
                   </Card.Text>
                 </Card.Body>
+                <ListGroupItem>
+                  <Button type="button" onClick={() => this.addFavourites(this.state.selectedItem.strMeal)}>Añadir favorito</Button>
+                  {console.log("STRMEal: "+this.state.selectedItem.strMeal)}
+                </ListGroupItem>
               </Card>
             </Col>
           </Row>
@@ -91,7 +111,6 @@ class ApiOnline extends React.Component {
             <Col lg={7} md={9} className="p-3 m-auto">
               <Carrousel />
             </Col>
-
           </Row>
         </Container>
       </div >
