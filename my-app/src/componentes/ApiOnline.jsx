@@ -8,7 +8,7 @@ import Carrousel from './Carrousel';
 class ApiOnline extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { img: '', nombre: '', id: '', selectedItem: '', tableData: [], dataCarrusel: [] };
+    this.state = { img: '', nombre: '', id: '', selectedItem: 0, tableData: [], dataCarrusel: [] };
     this.selectRegion = React.createRef();
     this.cambiarPorRegion = this.cambiarPorRegion.bind(this);
     this.actualizarTabla = this.actualizarTabla.bind(this);
@@ -38,18 +38,21 @@ class ApiOnline extends React.Component {
   }
 
   recogerDetalles = (item) => {
-    this.setState({selectedItem: item });
+    const imagen = item.strMealThumb;
+    const nombre = item.strMeal;
+    const id = item.idMeal
+    this.setState({ img: imagen, nombre: nombre, id: id });
   };
 
   render() {
     return (
-      <div className="abg">
+      <div className="bg">
+        <h1>Comidas</h1>
+        <SelectorRegion
+          reference={this.selectRegion}
+          onClickForm={this.actualizarTabla}
+        />
         <Container>
-          <h1>Comidas</h1>
-          <SelectorRegion
-            reference={this.selectRegion}
-            onClickForm={this.actualizarTabla}
-          />
           <Row>
             <Col lg={8} md={6}>
               <Table responsive striped hover>
@@ -75,12 +78,12 @@ class ApiOnline extends React.Component {
               <Card style={{ width: '18rem' }}>
                 <Card.Img
                   variant="top"
-                  src={this.state.selectedItem.strMealThumb}
+                  src={this.state.img}
                 />
                 <Card.Body>
-                  <Card.Title>{this.state.selectedItem.strMeal}</Card.Title>
+                  <Card.Title>{this.state.nombre}</Card.Title>
                   <Card.Text>
-                    Id: {this.state.selectedItem.idMeal}
+                    Id: {this.state.id}
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -88,10 +91,7 @@ class ApiOnline extends React.Component {
           </Row>
           <p></p>
           <Row>
-            <Col lg={7} md={9} className="p-3 m-auto">
-              <Carrousel />
-            </Col>
-
+            <Carrousel />
           </Row>
         </Container>
       </div >
